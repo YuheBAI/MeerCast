@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="view/Design/CSS Maison/CSS_Page_choix_maison.css">
+	<link rel="stylesheet" type="text/css" href="view/Design/CSS_Maison/CSS_Page_choix_maison.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css" integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
 	<link rel="icon"  href="view/PageAccueil/favicon/favicon-16x16.png" type="image/png" sizes="any">
@@ -14,9 +14,10 @@
 	<header class="pageHead">
 		<div id="mySidepanel" class="sidepanel">
 		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-		  <a href="index.php?action=see_pagecapteur">Mon Profil</a>
+		  <a href="index.php?action=see_PageMonProfil">Mon Profil</a>
+		  <a href="index.php?action=see_Ajout_batiment">Ajouter un bâtiment</a>
 		  <a href="index.php?action=see_pagecapteur">Mes capteurs / Actionneur</a>
-		  <a href="#">Se déconnecter</a>
+		  <a href="index.php?action=deconnexion">Se déconnecter</a>
 		</div>
 <button class="openbtn" onclick="openNav()">☰ </button>
 		<div class="logo">
@@ -34,7 +35,7 @@
 			
 			
         	<?php foreach ($propertiesArray as $property) {
-        		$name = $property['name']; 
+        		$name = $property['property_name']; 
         		$type = $property['property_type'];
    				$srcName = "view/Design/imagesMaison/".$type.".jpg";
    				?>
@@ -52,16 +53,16 @@
 		<div class="addButtonDiv">
 			<!-- Section contenant le bouton -->
 			<section class="addButtonSection">
-				<a href="index.php?action=see_add_house_page" target="blank"><i class="fas fa-plus fa-10x"></i></a>
+				<a href="index.php?action=see_Ajout_batiment"><i class="fas fa-plus fa-10x"></i></a>
 			</section>
 
 		</div>
 	
 	</div>
 	<ul>
-		<?php foreach ($properties as $property) { ?>
-			<p><?php echo $property["name"]." - ".$property["property_type"]; ?></p>
-		<?php } ?>
+		<!-- <?php foreach ($properties as $property) { ?>
+			<p><?php echo $property["property_name"]." - ".$property["property_type"]; ?></p>
+		<?php } ?> -->
 	</ul>
 	
 </body>

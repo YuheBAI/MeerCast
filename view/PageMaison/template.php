@@ -3,8 +3,8 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="view/Design/CSS Maison/template.css">
-	<link rel="stylesheet" type="text/css" href="view/Design/CSS Maison/<?php echo $css?>">
+	<link rel="stylesheet" type="text/css" href="view/Design/CSS_Maison/template.css">
+	<link rel="stylesheet" type="text/css" href="view/Design/CSS_Maison/<?php echo $css?>">
 	<link rel="icon"  href="view/PageAccueil/favicon/favicon-16x16.png" type="image/png" sizes="any">
 	<title><?= $pagename;?></title>
 </head>
@@ -13,13 +13,13 @@
 	<header class="pageTop">
 		<div id="mySidepanel" class="sidepanel">
 		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-		  <a href="#">Mon Profil</a>
+		  <a href="index.php?action=see_PageMonProfil">Mon Profil</a>
 		  <a href="index.php?action=see_pagecapteur">Mes capteurs / actionneurs</a>
 		  <a href="index.php?action=see_Ajout_batiment">Ajouter un bâtiment</a>
 		  <a href="index.php?action=see_scenario_page" target="blank">Programmer un scénario</a>
 		  <a href="index.php?action=see_info_house_page">Mes pièces</a>
 		  <a href="index.php?action=see_choose_house_page">Retour au choix de la maison</a>
-		  <a href="#">Se déconnecter</a>
+		  <a href="index.php?action=deconnexion">Se déconnecter</a>
 		</div>
 <button class="openbtn" onclick="openNav()">☰ </button>
 		<div class="logo">

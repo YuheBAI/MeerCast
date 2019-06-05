@@ -9,33 +9,32 @@
 <html>
 <head>
     <meta charset="utf-8">
-     <link rel="stylesheet" type="text/css" href="view/Design/CSS_forum/design2.css">
-      <link rel="icon"  href="view/PageAccueil/favicon/favicon-16x16.png" type="image/png" sizes="any">
+     <link rel="stylesheet" type="text/css" href="view/Design/CSS_forum/new.css">
     <title>Connexion</title>
 </head>
 
 <body>
-    <h1>Connexion</h1>
-    <div id="Forum">
+    <h1 style="text-align: center;  margin: 50px; font-size: 4em;">Connexion</h1>
+    <div id="Forum" style="text-align: center;">
     <?php	if(isset($actionner)){?>
-<form method="post" action="index.php?action=connexion">
+<form method="post" action="index.php?action=connexion"   style="display: flex; flex-direction: column;text-align: center; ">
   <?php  }
 elseif (!isset($actionner)) { ?>
-   <form method="post" action="../index.php?action=connexion">
+   <form method="post" action="../index.php?action=connexion" style="display: flex; flex-direction: column;text-align: center; ">
 <?php }
     ?>
     	
-    <label>
-        Pseudo :
-        <input type="text" name="pseudo" placeholder="Pseudo...." required>
+    <label class="elem">
+        Email :<br/>
+        <input type="email" name="email" placeholder="Email...." required>
     </label>
     
-    <label>
-        Mot de Passe :
+    <label class="elem">
+        Mot de Passe :<br/>
         <input type="password" name="mdp" required>
-    </label>
+    </label><br/>
     
-    <input type="submit" value="Ajouter">
+    <input type="submit" value="Se Connecter" class= "button" style="cursor: pointer;">
 </form>
 
 <?php 

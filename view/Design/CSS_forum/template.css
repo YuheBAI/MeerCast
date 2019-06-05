@@ -5,7 +5,7 @@
 }
 header{
    background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("../../PageAccueil/Image/background.png");
-    height: 18vh;
+    height: 15vh;
     background-size: cover;
     
 }

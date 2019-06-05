@@ -26,10 +26,27 @@
         <li><a href="index.php?action=see_pagedevis">DEMANDER UN DEVIS</a></li>
        		<li><button class="openbtn" onclick="openNav2()">NOUS CONTACTER</button>
     		<li><a href="index.php?action=see_pagefaq">FAQ / FORUM</a></li>
-    		<li><button class="openbtn" onclick="openNav()">SE CONNECTER</button></li>
+    		<?php
+
+      if (isset($_SESSION['email'])){?>
+      <li><a href="index.php?action=see_choose_house_page">MES MAISONS</a></li>
+        
+        <?php }  else{?>
+        <li><button class="openbtn" onclick="openNav()">SE CONNECTER</button></li>
+
+<?php
+      }
+        
+
+      if (isset($_SESSION['email'])){?>
+       <li><a href="index.php?action=deconnexion">DECONNEXION</a></li>
+      
+    <?php 
+   }
+   ?>
     		</ul>
     	</div>
-                 <div id="forResponsive">
+                 <div style="" id="forResponsive">
                     <div id="respons" class="respon">
                       <a href="javascript:void(0)" id="closebtnR" onclick="closeNavR()">×</a>
                       <a class="active" href="#">ACCUEIL</a>
@@ -37,7 +54,24 @@
                       <a href="index.php?action=see_pagedevis">DEMANDER UN DEVIS</a>
                       <button class="openbtn" onclick="openNav2()">NOUS CONTACTER</button>
                       <a href="index.php?action=see_pagefaq">FAQ / FORUM</a>
-                      <button class="openbtn" onclick="openNav()">SE CONNECTER</button>
+                      <?php
+
+                              if (isset($_SESSION['email'])){?>
+                                  <a href="index.php?action=see_choose_house_page">MES MAISONS</a>
+                                
+                                <?php }  else{?>
+                                <button class="openbtn" onclick="openNav()">SE CONNECTER</button>
+
+                        <?php
+                              }
+                                
+
+                              if (isset($_SESSION['email'])){?>
+                               <a href="index.php?action=deconnexion">DECONNEXION</a>
+                              
+                            <?php 
+                           }
+                           ?>
                     </div>
                   <button id="openbtnR" onclick="openNavR()">☰ </button>
                 </div>
@@ -71,20 +105,26 @@
   <div class="identification">
   <p>
        <h2 class="sidetitle">Votre compte : </h2>
-       <label>
-        Email : <br>
-        <input type="email" name="email" placeholder="Ex: nom-prenom@gmail.com" id="email" required><br>
-    </label>
+
+       <form method="post" action="index.php?action=connexion">
+
     <label>
-        Mot de passe :  <br>
-        <input type="password" name="password" id="mdp" required><br>
-    </label>
-    <a href="index.php?action=connexion"><input type="submit" id="connexion" value="Se Connecter"></a>
-    <a href="index.php?action=inscription""><p class="compte1" >Créer un Compte</p></a>
+        Email :<br>
+        <input type="email" name="email" placeholder="Email...." id="email" required>
+    </label><br>
+    
+    <label>
+        Mot de Passe :<br>
+        <input type="password" name="mdp" id="mdp" required>
+    </label><br>
+    
+    <input type="submit" value="Se Connecter" id="connexion">
+</form>
+
+    <a href="index.php?action=inscription"><p class="compte1" >Créer un Compte</p></a>
     <a href=""><p class="compte1" >Mot de passe oublié</p></a>
     </p>
-
-  </div>
+   </div>
 </div>
     	<div class="hero">
     		<h1>Entrez dans la Maison du Futur </h1>
@@ -111,9 +151,20 @@
 						<div class="content2">
 							<h2>Nouveautés</h2>
 							<p align="justify">Nous sommes encore dans la conception de notre système, nous écoutons les besoins de nos clients et utilisons la méthode agile.</p>
-							<a href=""><button class="boutton">Voir Plus</button></a>
+							<a href="#"><button class="boutton">Voir Plus</button></a>
 						</div>
 					</article>
+
+                    </article>
+                    <article class="article2">
+                        <span class="image"><img src="view/PageAccueil/image/environnement.jpg" alt="environnement"/></span>
+                        <div class="content">
+                            <h2>Démarches Environnementales
+                            </h2>
+                            <p align="justify">Nous sommes encore dans la conception de cette partie. Elle vous donne une idée de comment nous économisons de l'énergie pour l'environnement.</p>
+                            <a href="index.php?action=see_environment_page"><button class="boutton">Voir Plus</button></a>
+                        </div>
+                    </article>
 				</div>
 			</section>
 	  <footer>

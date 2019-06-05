@@ -11,7 +11,7 @@
 
 <header>
       <div class="logo">
-        <img src="view/PageAccueil/Image/meercastest.png">
+        <a href="index.php?action=see_PageAc"><img src="view/PageAccueil/image/meercastest.png"></a>
       </div>
       <div class="row">
         <ul class="mainNav">
@@ -23,7 +23,7 @@
         <li class="active2"><a href="">FAQ / FORUM</a></li>
         <?php
 
-      if (isset($_SESSION['pseudo'])){?>
+      if (isset($_SESSION['email'])){?>
       <li><a href="index.php?action=see_choose_house_page">MES MAISONS</a></li>
         
         <?php }  else{?>
@@ -33,7 +33,7 @@
       }
         
 
-      if (isset($_SESSION['pseudo'])){?>
+      if (isset($_SESSION['email'])){?>
        <li><a href="index.php?action=deconnexion">DECONNEXION</a></li>
       
     <?php 
@@ -77,8 +77,8 @@
     <form method="post" action="index.php?action=connexion">
 
     <label>
-        Pseudo :<br>
-        <input type="text" name="pseudo" placeholder="Pseudo...." id="email" required>
+        Email :<br>
+        <input type="email" name="email" placeholder="Email...." id="email" required>
     </label><br>
     
     <label>
@@ -89,10 +89,6 @@
     <input type="submit" value="Se Connecter" id="connexion">
 </form>
 
-
-
-
-   
     <a href="index.php?action=inscription"><p class="compte1" >Créer un Compte</p></a>
     <a href=""><p class="compte1" >Mot de passe oublié</p></a>
     </p>

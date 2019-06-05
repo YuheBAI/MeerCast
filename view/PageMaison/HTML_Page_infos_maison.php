@@ -3,7 +3,8 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="view/Design/CSS Maison/CSS_Page_infos_maison.css">
+	<!-- <link rel="stylesheet" type="text/css" href="view/Design/CSS_Maison/CSS_Page_infos_maison.css"> -->
+	<link rel="stylesheet" type="text/css" href="view/Design/CSS_Maison/CSS_Page_infos_maison.css">
 	<link rel="icon"  href="view/PageAccueil/favicon/favicon-16x16.png" type="image/png" sizes="any">
 	<title>Informations sur la maison</title>
 </head>
@@ -15,16 +16,18 @@
 
 		<!-- Modal content -->
 		<div class="modal-content">
+
+			<!-- en-tête du modal -->
 	    	<div class="modal-header">
 	      		<span class="close">&times;</span>
 	      		<h1 id="modalTitle">Modal Header</h1>
 	    	</div>
+
+	    	<!-- body du modal -->
 	    	<div class="modal-body">
-	      		<p id="p1">Some text in the Modal Body</p>
-	      		<p id="p2">Some other text...</p>
-	      		<p id="p3">...</p>
-	      		<p id="info_sur_la_pièce"></p>
+	    		<!-- partie remplie individuellement pour chaque pièce dans le js -->
 	    	</div>
+
 	    	<div class="modal-footer">
 	    		<h3>Modal footer</h3>
 	    	</div>
@@ -36,12 +39,12 @@
 	<header class="pageTop">
 		<div id="mySidepanel" class="sidepanel">
 		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-		  <a href="#">Mon Profil</a>
+		  <a href="index.php?action=see_PageMonProfil">Mon Profil</a>
 		  <a href="index.php?action=see_pagecapteur">Mes capteurs/ actionneurs</a>
 		  <a href="index.php?action=see_Ajout_batiment">Ajouter un bâtiment</a>
 		  <a href="index.php?action=see_scenario_page" target="blank">Programmer un scénario</a>
 		  <a href="index.php?action=see_choose_house_page">Retour au choix de la maison</a>
-		  <a href="#">Se déconnecter</a>
+		  <a href="index.php?action=deconnexion">Se déconnecter</a>
 		</div>
 <button class="openbtn" onclick="openNav()">☰ </button>
 		<div class="logo">
@@ -52,70 +55,38 @@
 	</header>
 
 <section id="allrooms">
-	<div class="rooms">
 
-		<section id="salon" class="roomInformation">
+	<!-- Partie de la page avec les pièces -->
+	<?php foreach ($roomsArray as $room) { ?>
+
+        <div id=<?php echo $room[1]; ?> class="roomInformation" onclick="clickOnRoom(this.id)">
+
 			<div class="div1">
-				<h1 id="titre">Salon</h1>
-				<li id="tempSalon">Température : 20°C</li>
-				<li id="lumSalon">Luminosité : lumSalon</li>
-				<li>Humidité : humSalon</li>
-				<li id="tvSalon">Télévision : allumée</li>
+				<h1 id="titre"><?php echo $room[0]; ?></h1>
+				<?php foreach ($sensorsArray as $sensor) { ?>
+					<?php foreach ($sensor as $sensorInfo) { ?>
+						<?php if ($sensorInfo[0] == $room[0]) { ?>
+							<li><?php echo $sensorInfo[1]." : "; ?><span><?php echo $sensorInfo[2]; ?></span></li>
+							<p hidden=""><?php echo $sensorInfo[3]; ?></p>
+						<?php } ?>
+					<?php } ?>
+				<?php } ?>
 			</div>
 			<div class="div2"> 
-				<img src="view/Design/imagesMaison/salon.jpg">
+				<img src=<?php echo $room[2]; ?>>
 			</div>
-		</section>
-		
-
-		<section id="salle_a_manger" class="roomInformation">
-			<div class="div1">
-				<h1 id="titre">Salle à manger</h1>
-				<li id="tempSAM">Température : 20°C</li>
-				<li id="lumSAM">Luminosité : lumSAM</li>
-				<li>Humidité : humSAM</li>
-			</div>
-			<div class="div2"> 
-				<img src="view/Design/imagesMaison/salle_a_manger.jpg">
-			</div>
-			
-		</section>
-	</div>
-
-	<div class="rooms">
-		<section id="chambre" class="roomInformation">
-			<div class="div1">
-				<h1 id="titre">Chambre</h1>
-				<li id="tempChambre">Température : 21°C</li>
-				<li id="lumChambre">Luminosité : lumChambre</li>
-				<li>Humidité : humChambre</li>
-			</div>
-			<div class="div2"> 
-				<img src="view/Design/imagesMaison/chambre.jpg">
-			</div>
-		</section>
-
-		<section id="salle_de_bain" class="roomInformation">
-			<div class="div1">
-				<h1 id="titre">Salle de bain</h1>
-				<li id="tempSDB">Température : 20°C</li>
-				<li id="lumSDB">Luminosité : lum</li>
-				<li id="humSDB">Humidité : humSDB</li>
-			</div>
-			<div class="div2"> 
-				<img src="view/Design/imagesMaison/salle_de_bain.jpg">
-			</div>
-		</section>
-	</div>
+		</div>
+	<?php } ?>
 </section>
 
 	<!--  -->
 	
 	<footer class="boutonScenario">
-		<a href="index.php?action=see_scenario_page" target="blank">Programmez un scénario</a>
+		<a href="index.php?action=see_scenario_page">Programmez un scénario</a>
 	</footer>
 
-	<script type="text/javascript" src="view/Design/CSS Maison/JS_Page_infos_maison.js"></script>
+	<script type="text/javascript" src="view/Design/CSS_Maison/JS_Page_infos_maison.js"></script>
+
 </body>
 
 </html>

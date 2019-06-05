@@ -1,26 +1,14 @@
 <?php  
 
-$admins=getAdmins();
-if( isset($_SESSION["pseudo"])) { 
-  foreach ($admins as $admin) {
-    if($admin['pseudo']==$_SESSION["pseudo"]){
-        require("Location: index.php?action=administrateur");
-    }
-  } 
-}
-
-
- require "view/PageAccueil/forum/template.php";
+  require "view/PageAccueil/forum/template.php";
 ?>
-<!--  <?php  require "view/PageAccueil/forum/template.php";?> -->
-
+ 
  	
 
 <html>
 <head>
     <meta charset="utf-8">
      <link rel="stylesheet" type="text/css" href="view/Design/CSS_forum/design.css">
-      <link rel="icon"  href="view/PageAccueil/favicon/favicon-16x16.png" type="image/png" sizes="any">
     <title>Le Forum Meercast</title>
 </head>
 
@@ -35,9 +23,12 @@ if( isset($_SESSION["pseudo"])) {
    
    
 if(isset($_GET["categorie"])){
-  $_GET["categorie"]= htmlspecialchars($_GET["categorie"]);
+  $_GET["categorie"]=htmlspecialchars($_GET["categorie"]);
   ?>
+  <a href="index.php?action=see_forum"><img src="view/PageAccueil/Image/arrow2.png" value="Retour" style="width: 40px; height:40px; margin-left: 15px; position: top;cursor:pointer;" > </a>
+  <!-- <input type="button" value="Retour" onclick="history.go(-1)" style="color: darkorange; background-color: transparent; border: none;"> -->
   <div class = "categories"> 
+
  <h1 style="text-transform: uppercase; font-size: 1.7em;"> <?php echo $_GET["categorie"];  ?></h1>
  
 
@@ -49,7 +40,7 @@ if(isset($_GET["categorie"])){
 </div>
 <?php } ?>
 </div> <?php
-    if (isset($_SESSION['pseudo'])){?>
+    if (isset($_SESSION['email'])){?>
   <a class="newSubject" href="index.php?action=addPost&amp;categorie=<?php echo $_GET["categorie"];?>">Nouveau sujet</a>
 
 <?php
@@ -57,20 +48,20 @@ if(isset($_GET["categorie"])){
 
 }
 elseif(isset($newtopic)){?>
+<a href="index.php?action=see_forum"><img src="view/PageAccueil/Image/arrow2.png" value="Retour" style="width: 40px; height:40px; margin-left: 15px; position: top; cursor:pointer;" ></a>
  <div class="categories">
+  
  <h1 style="text-transform: uppercase;"> <?php echo $newtopic;  ?></h1>
  
  <?php
- $subjects= getTopic($newtopic);
+ $subjects= getTopic ($newtopic);
  while($subject = $subjects->fetch()){ 
            $proprietary=$subject["proprietary"];
-           $proprio= getProprietaryTopic($proprietary);
+           $proprio= getProprietaryTopic ($proprietary);
            $proprioz= $proprio->fetch();
            $proprio2=$proprioz["pseudo"];
-           $dates=$subject["date"];
-
+           $dates=$subject["dates"];
     ?>
-    <?php echo "lol"?>
     <div class = "reponse"> 
  <h2> <?php echo $subject["contenu"];  ?></h2>
  <h2></h2>
@@ -81,13 +72,13 @@ elseif(isset($newtopic)){?>
  <?php
  }
 
- if (isset($_SESSION['pseudo'])){?>
+ if (isset($_SESSION['email'])){?>
            <form class="formulaire" method="post" action="index.php?action=see_forum">
            <label style="font-size: 1.5em; ">
         Ajouter commentaire:<br>
         <textarea name="comadditionnel" required></textarea>
     </label>
-    <input type="hidden" name="sujet" value=<?php echo $newtopic?>>
+    <input type="hidden" name="sujet" value="<?php echo $newtopic?>">
     <input style="margin-bottom: 40px;" type="submit" value="Ajouter">
  <?php  } ?>
 </div>
@@ -95,6 +86,7 @@ elseif(isset($newtopic)){?>
 }
 else { ?>
     <div class="categories">
+      
    <?php    
         $requete= getcategories();
         while ($donnees = $requete->fetch())
@@ -114,6 +106,3 @@ else { ?>
 
 </body>
 </html>
-
-
-

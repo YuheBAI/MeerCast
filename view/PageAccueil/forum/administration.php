@@ -22,6 +22,7 @@
 if(isset($_GET["categorie"])){
   $_GET["categorie"]= htmlspecialchars($_GET["categorie"]);
   ?>
+  <img src="view/PageAccueil/Image/arrow2.png" value="Retour" onclick="history.go(-1)" style="width: 4%; height:7%; margin-left: 15px; position: top; cursor:pointer;" >
   <div class = "categories"> 
  <h1> <?php echo $_GET["categorie"];  ?></h1>
  
@@ -37,12 +38,13 @@ if(isset($_GET["categorie"])){
 </div>  
 <?php
     if (isset($_SESSION['pseudo'])){?>
-  <a class="newSubject" href="index.php?action=addPost2&amp;categorie=<?php echo $_GET["categorie"];?>">Nouveau sujet</a>
+  <a class="newSubject" href="index.php?action=addPost2&amp;categorie=<?php echo $_GET["categorie"]; ?>">Nouveau sujet</a>
 
 <?php
 }
 }
-else if(isset($newtopic)|| isset($_GET["newtopic"])){?>
+elseif(isset($newtopic)|| isset($_GET["newtopic"])){?>
+<img src="view/PageAccueil/Image/arrow2.png" value="Retour" onclick="history.go(-1)" style="width: 4%; height:7%; margin-left: 15px; position: top; cursor:pointer;" >
  <div class="categories">
  <h1 style="text-transform: uppercase;"> <?php echo $newtopic;  ?></h1>
  
@@ -71,7 +73,7 @@ else if(isset($newtopic)|| isset($_GET["newtopic"])){?>
         Ajouter commentaire:<br>
         <textarea name="comadditionnel" required></textarea>
     </label>
-    <input type="hidden" name="sujet" value='<?php echo $newtopic?>'>
+    <input type="hidden" name="sujet" value="<?php echo $newtopic; ?>">
     <input type="submit" value="Ajouter">
  <?php  } ?>
 </div>

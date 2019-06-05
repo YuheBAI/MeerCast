@@ -11,7 +11,6 @@
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
      <link rel="stylesheet" type="text/css" href="view/Design/CSS_forum/inscription.css">
-      <link rel="icon"  href="view/PageAccueil/favicon/favicon-16x16.png" type="image/png" sizes="any">
     <title>Inscription</title>
 </head>
 
@@ -36,10 +35,13 @@
         Confirmation :<br>
         <input type="password" name="mdp2" required>
     </label>
-    <input type="submit" value="Inscription" class="button" >
+    <input type="submit" value="Ajouter" class="button" >
 </form>
 
 <?php echo $erreur; ?>
+
+
+
     </div>
     
     

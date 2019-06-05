@@ -21,7 +21,7 @@
 		<form method="post" action="index.php?action=add_property">
 		    <label>
 		        Nom :
-		        <input type="text" name="name" required>
+		        <input type="text" name="property_name" required>
 		    </label>
 		    <label>
 		        Type :
